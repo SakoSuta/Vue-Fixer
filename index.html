@@ -7,10 +7,27 @@
         <meta name="description" content="Une description de la page" />
         <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
         <script src="app.js" type="module" defer></script>
+        <link rel="stylesheet" href="https://unpkg.com/mvp.css@1.12/mvp.css">
     </head>
     <body>
         <div id="app">
+            <form action="" v-on:submit.prevent="onSubmit">
 
+                <label for="Nbr1">Nomber</label>
+                <input type="number" name="Nbr" v-model="Nbr">
+                <select name="CurrenciN" v-model="CurrenciN">
+                    <option value="" disabled>**Select currencies of the nomber**</option>
+                    <option :value="Key" v-for="(Currenci, Key) in Currencies">{{Currenci}}</option>
+                </select>
+                <select  name="CurrenciC" v-model="CurrenciC">
+                    <option value="" disabled>**Select currencies for convert**</option>
+                    <option :value="Key" v-for="(Currenci, Key) in Currencies">{{Currenci}}</option>
+                </select>
+
+                <h3>The Result is {{ CurrenciC }}</h3>
+
+                <button type="submit">Convert</button>
+            </form>
         </div>
     </body>
 </html>
