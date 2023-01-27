@@ -6,9 +6,16 @@ const Fixer = {
             CurrenciN:"",
             CurrenciC:"",
             Result:"",
+            message:"",
         }
     },methods:{
         convert(){
+            this.message = "";
+            if(this.Nbr == "" || this.CurrenciC == "" || this.CurrenciN == ""){
+                return this.message = "Veuillez remplir tous les champs!"
+            }else if(this.CurrenciC == this.CurrenciN){
+                return this.message = "Veuillez Entrer deux 'currencies' differents!"
+            }
             fetch(`https://api.frankfurter.app/latest?amount=${this.Nbr}&from=${this.CurrenciN}&to=${this.CurrenciC}`)
             .then(responsee => responsee.json())
             .then(jsonn => {
