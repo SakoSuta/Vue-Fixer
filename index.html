@@ -11,22 +11,27 @@
     </head>
     <body>
         <div id="app">
-            <form action="" v-on:submit.prevent="onSubmit">
+            <form action="" v-on:submit.prevent="">
 
                 <label for="Nbr1">Nomber</label>
                 <input type="number" name="Nbr" v-model="Nbr">
+
+                <label for="Nbr1">Currencies of the nomber</label>
                 <select name="CurrenciN" v-model="CurrenciN">
                     <option value="" disabled>**Select currencies of the nomber**</option>
                     <option :value="Key" v-for="(Currenci, Key) in Currencies">{{Currenci}}</option>
                 </select>
+
+                <label for="Nbr1">Currencies for convert</label>
                 <select  name="CurrenciC" v-model="CurrenciC">
                     <option value="" disabled>**Select currencies for convert**</option>
                     <option :value="Key" v-for="(Currenci, Key) in Currencies">{{Currenci}}</option>
                 </select>
 
-                <h3>The Result is {{ CurrenciC }}</h3>
+                <h3 v-for="(index, Key) in Result">The Result is {{ index }}</h3>
 
-                <button type="submit">Convert</button>
+                <button type="submit" @click.prevent="convert">Convert</button>
+
             </form>
         </div>
     </body>
